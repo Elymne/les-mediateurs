@@ -28,7 +28,7 @@ class _State extends ConsumerState<HomePage> {
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Header(),
+                //Header(),
               ],
             ),
           ],
