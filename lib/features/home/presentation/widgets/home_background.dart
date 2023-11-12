@@ -1,6 +1,8 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:les_mediateurs/shared/data/local/locals.dart';
+import 'package:les_mediateurs/shared/domain/providers/locals_provider/locals_provider.dart';
 import 'package:les_mediateurs/shared/widgets/animated_text/animated_text.dart';
 import 'package:uuid/uuid.dart';
 
@@ -17,6 +19,8 @@ class HomeBackground extends ConsumerStatefulWidget {
 }
 
 class _State extends ConsumerState<HomeBackground> with SingleTickerProviderStateMixin {
+  late final Locals locals = ref.read(localsProvider);
+
   // Uuid objetc generator.
   final Uuid uuid = const Uuid();
 
@@ -77,7 +81,7 @@ class _State extends ConsumerState<HomeBackground> with SingleTickerProviderStat
                   opacity: fadeOutAnimation.value,
                   child: AnimatedText(
                     key: Key(_animatedTextKeyM),
-                    data: "LES MÉDIATEURS,\nPAR BENJAMIN ROBICHON",
+                    data: locals.getLocals(context).home_page_app_name,
                     duration: const Duration(milliseconds: 600),
                     textAlign: TextAlign.center,
                     style: const TextStyle(
@@ -123,7 +127,7 @@ class _State extends ConsumerState<HomeBackground> with SingleTickerProviderStat
                   opacity: fadeOutAnimation.value,
                   child: AnimatedText(
                     key: Key(_animatedTextKeyS),
-                    data: "LES MÉDIATEURS,\nPAR\nBENJAMIN\nROBICHON",
+                    data: locals.getLocals(context).home_page_app_name,
                     duration: const Duration(milliseconds: 600),
                     textAlign: TextAlign.center,
                     style: const TextStyle(
@@ -171,7 +175,7 @@ class _State extends ConsumerState<HomeBackground> with SingleTickerProviderStat
                 opacity: fadeOutAnimation.value,
                 child: AnimatedText(
                   key: Key(_animatedTextKeyL),
-                  data: "LES MÉDIATEURS,\nPAR BENJAMIN ROBICHON",
+                  data: locals.getLocals(context).home_page_app_name,
                   duration: const Duration(milliseconds: 600),
                   style: const TextStyle(
                     color: Colors.white,
