@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:les_mediateurs/configurations/constantes.dart';
 import 'package:les_mediateurs/shared/data/local/locals.dart';
 import 'package:les_mediateurs/shared/domain/providers/locals_provider/locals_provider.dart';
 import 'package:les_mediateurs/shared/widgets/header/items/header_home_item.dart';
@@ -23,7 +24,7 @@ class _State extends ConsumerState<Header> {
     final size = MediaQuery.of(context).size;
     final currentPage = ref.watch(headerStateProvider);
 
-    if (size.width < 1200 && size.width >= 800) {
+    if (size.width < mediumScreenCapWidth && size.width >= smallScreenCapWith) {
       return Container(
         height: 80,
         width: size.width,
@@ -69,7 +70,7 @@ class _State extends ConsumerState<Header> {
       );
     }
 
-    if (size.width < 800) {
+    if (size.width < smallScreenCapWith) {
       return Container(
         height: 80,
         width: size.width,
@@ -132,7 +133,7 @@ class _State extends ConsumerState<Header> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           SizedBox(
-            width: 1200,
+            width: largeScreenDisplayWidth,
             child: Row(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,

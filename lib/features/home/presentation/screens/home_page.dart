@@ -46,14 +46,17 @@ class _State extends ConsumerState<HomePage> with SingleTickerProviderStateMixin
               opacity: fadeInAnimation.value,
               child: const Header(),
             ),
-            Opacity(
-              opacity: fadeInAnimation.value,
-              child: const Column(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  CatchTextContainer(),
-                ],
+            Padding(
+              padding: const EdgeInsets.only(top: 80),
+              child: Opacity(
+                opacity: fadeInAnimation.value,
+                child: const Column(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    CatchTextContainer(),
+                  ],
+                ),
               ),
             ),
           ],
