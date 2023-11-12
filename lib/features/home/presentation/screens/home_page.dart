@@ -15,25 +15,51 @@ class HomePage extends ConsumerStatefulWidget {
   ConsumerState<ConsumerStatefulWidget> createState() => _State();
 }
 
-class _State extends ConsumerState<HomePage> {
+class _State extends ConsumerState<HomePage> with SingleTickerProviderStateMixin {
+// Just a simple opacity animation.
+  late final AnimationController animationController = AnimationController(
+    vsync: this,
+    duration: const Duration(milliseconds: 800),
+  );
+  late final Animation<double> fadeInAnimation = Tween(begin: 0.0, end: 1.0).animate(
+    CurvedAnimation(parent: animationController, curve: Curves.easeInOut),
+  )..addListener(() => setState(() {}));
+
+  @override
+  void initState() {
+    super.initState();
+    if (widget.shouldSkipAnimation == false) {
+      startAnimation();
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
         child: Stack(
           children: [
-            HomeBackground(),
+            HomeBackground(skipAnimation: widget.shouldSkipAnimation),
             Column(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                //Header(),
+                Opacity(
+                  opacity: fadeInAnimation.value,
+                  child: const Header(),
+                ),
               ],
             ),
           ],
         ),
       ),
     );
+  }
+
+  ///
+  Future startAnimation() async {
+    await Future.delayed(const Duration(milliseconds: 2200));
+    animationController.forward();
   }
 }
