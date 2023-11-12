@@ -57,8 +57,23 @@ class _State extends ConsumerState<CatchTextContainer> {
     }
 
     if (size.width < smallScreenCapWith) {
-      /// I may not want to display something on mobile display.
-      return const SizedBox();
+      return const SizedBox(
+        height: 200,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisSize: MainAxisSize.max,
+          children: [
+            Text(
+              "Abdoulah mon frérot",
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 40,
+                fontWeight: FontWeight.w300,
+              ),
+            ),
+          ],
+        ),
+      );
     }
 
     return const Row(

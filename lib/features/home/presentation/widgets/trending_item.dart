@@ -14,6 +14,8 @@ class TrendingItem extends ConsumerStatefulWidget {
 }
 
 class _State extends ConsumerState<TrendingItem> {
+  final int a = 1;
+
   @override
   Widget build(BuildContext context) {
     return MouseRegion(
@@ -23,21 +25,19 @@ class _State extends ConsumerState<TrendingItem> {
       child: GestureDetector(
         onTap: () {},
         child: Container(
-          decoration: BoxDecoration(
+          height: 120,
+          decoration: const BoxDecoration(
             color: Colors.white,
-            borderRadius: BorderRadius.circular(60),
-            border: Border.all(
-              color: Colors.grey,
-              width: 0.2,
-            ),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withOpacity(0.1),
-                spreadRadius: 3,
-                blurRadius: 5,
-                offset: const Offset(0, 0), // changes position of shadow
+            border: Border(
+              top: BorderSide(
+                color: Colors.grey,
+                width: 0.2,
               ),
-            ],
+              bottom: BorderSide(
+                color: Colors.grey,
+                width: 0.2,
+              ),
+            ),
           ),
           child: Row(
             children: [
@@ -57,38 +57,43 @@ class _State extends ConsumerState<TrendingItem> {
                 ],
               ),
               const SizedBox(width: 30),
-              const Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SizedBox(height: 10),
-                  Text(
-                    "Le titre d'un truc.",
-                    style: TextStyle(
-                      fontSize: 20,
-                      color: Colors.black,
-                      fontWeight: FontWeight.w900,
-                      wordSpacing: 0,
+              const Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(height: 10),
+                    Text(
+                      "Le titre d'un bidule.",
+                      maxLines: 2,
+                      softWrap: true,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.black,
+                        fontWeight: FontWeight.w900,
+                        wordSpacing: 0,
+                      ),
                     ),
-                  ),
-                  Text(
-                    "Culturel",
-                    style: TextStyle(
-                      fontSize: 18,
-                      color: Colors.grey,
-                      fontWeight: FontWeight.w400,
+                    Text(
+                      "Culturel",
+                      style: TextStyle(
+                        fontSize: 18,
+                        color: Colors.grey,
+                        fontWeight: FontWeight.w400,
+                      ),
                     ),
-                  ),
-                  Expanded(child: SizedBox()),
-                  Text(
-                    "27 septembre 2022",
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: Colors.black,
-                      fontWeight: FontWeight.w300,
+                    Expanded(child: SizedBox()),
+                    Text(
+                      "27 septembre 2022",
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: Colors.black,
+                        fontWeight: FontWeight.w300,
+                      ),
                     ),
-                  ),
-                  SizedBox(height: 10),
-                ],
+                    SizedBox(height: 10),
+                  ],
+                ),
               ),
             ],
           ),

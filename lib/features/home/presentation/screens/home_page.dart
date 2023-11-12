@@ -43,6 +43,25 @@ class _State extends ConsumerState<HomePage> with SingleTickerProviderStateMixin
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+
+    if (size.width < 360) {
+      return const Scaffold(
+        backgroundColor: Colors.black,
+        body: SafeArea(
+          child: Center(
+            child: Text(
+              "(:",
+              style: TextStyle(
+                fontSize: 100,
+                color: Colors.white,
+              ),
+            ),
+          ),
+        ),
+      );
+    }
+
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
@@ -58,6 +77,7 @@ class _State extends ConsumerState<HomePage> with SingleTickerProviderStateMixin
               child: Opacity(
                 opacity: widget.shouldSkipAnimation ? 1 : fadeInAnimation.value,
                 child: ListView.builder(
+                  shrinkWrap: true,
                   itemCount: contents.length,
                   itemBuilder: (context, index) {
                     return contents[index];
