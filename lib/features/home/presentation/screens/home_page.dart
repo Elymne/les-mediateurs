@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:les_mediateurs/features/home/presentation/widgets/catch_text_container.dart';
 import 'package:les_mediateurs/features/home/presentation/widgets/home_background.dart';
 import 'package:les_mediateurs/shared/widgets/header/header.dart';
 
@@ -41,15 +42,19 @@ class _State extends ConsumerState<HomePage> with SingleTickerProviderStateMixin
         child: Stack(
           children: [
             HomeBackground(skipAnimation: widget.shouldSkipAnimation),
-            Column(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Opacity(
-                  opacity: fadeInAnimation.value,
-                  child: const Header(),
-                ),
-              ],
+            Opacity(
+              opacity: fadeInAnimation.value,
+              child: const Header(),
+            ),
+            Opacity(
+              opacity: fadeInAnimation.value,
+              child: const Column(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  CatchTextContainer(),
+                ],
+              ),
             ),
           ],
         ),

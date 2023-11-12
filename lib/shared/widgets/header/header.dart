@@ -20,11 +20,13 @@ class _State extends ConsumerState<Header> {
 
   @override
   Widget build(BuildContext context) {
-    final width = MediaQuery.of(context).size.width;
+    final size = MediaQuery.of(context).size;
     final currentPage = ref.watch(headerStateProvider);
 
-    if (width < 1200 && width >= 800) {
+    if (size.width < 1200 && size.width >= 800) {
       return Container(
+        height: 80,
+        width: size.width,
         decoration: BoxDecoration(
           color: Colors.white,
           border: const Border(
@@ -42,65 +44,72 @@ class _State extends ConsumerState<Header> {
             ),
           ],
         ),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-          child: Stack(
-            children: [
-              HeaderMenuButton(
-                onClick: () {},
-              ),
-              Center(
-                child: HeaderHomeItem(
-                  onClick: () {
-                    ref.read(headerStateProvider.notifier).state = SelectedPage.home;
-                  },
+        child: Stack(
+          children: [
+            Row(
+              children: [
+                const SizedBox(width: 20),
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: HeaderMenuButton(
+                    onClick: () {},
+                  ),
                 ),
-              ),
-            ],
-          ),
-        ),
-      );
-    }
-
-    if (width < 800) {
-      return Container(
-        decoration: BoxDecoration(
-          color: Colors.white,
-          border: const Border(
-            bottom: BorderSide(
-              width: 0.2,
-              color: Colors.black,
+              ],
             ),
-          ),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey.withOpacity(0.3),
-              spreadRadius: 3,
-              blurRadius: 5,
-              offset: const Offset(0, 2), // changes position of shadow
-            ),
-          ],
-        ),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-          child: Row(
-            children: [
-              HeaderMenuButton(
+            Center(
+              child: HeaderHomeItem(
                 onClick: () {
                   ref.read(headerStateProvider.notifier).state = SelectedPage.home;
                 },
               ),
-              const SizedBox(width: 40),
-              HeaderHomeItemReduced(
-                onClick: () {},
-              ),
-            ],
+            ),
+          ],
+        ),
+      );
+    }
+
+    if (size.width < 800) {
+      return Container(
+        height: 80,
+        width: size.width,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          border: const Border(
+            bottom: BorderSide(
+              width: 0.2,
+              color: Colors.black,
+            ),
           ),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.3),
+              spreadRadius: 3,
+              blurRadius: 5,
+              offset: const Offset(0, 2), // changes position of shadow
+            ),
+          ],
+        ),
+        child: Row(
+          children: [
+            const SizedBox(width: 20),
+            HeaderMenuButton(
+              onClick: () {
+                ref.read(headerStateProvider.notifier).state = SelectedPage.home;
+              },
+            ),
+            const SizedBox(width: 40),
+            HeaderHomeItemReduced(
+              onClick: () {},
+            ),
+          ],
         ),
       );
     }
 
     return Container(
+      height: 80,
+      width: size.width,
       decoration: BoxDecoration(
         color: Colors.white,
         border: const Border(
@@ -122,57 +131,45 @@ class _State extends ConsumerState<Header> {
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 10),
-            child: SizedBox(
-              width: 1200,
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    children: [
-                      const SizedBox(width: 10),
-                      HeaderHomeItem(
-                        onClick: () {
-                          ref.read(headerStateProvider.notifier).state = SelectedPage.home;
-                        },
-                      ),
-                    ],
-                  ),
-                  Row(
-                    mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      const SizedBox(width: 30),
-                      HeaderItem(
-                        title: locals.getLocals(context).header_about_us,
-                        isSelected: currentPage == SelectedPage.aboutUs,
-                        onClick: () {
-                          ref.read(headerStateProvider.notifier).state = SelectedPage.aboutUs;
-                        },
-                      ),
-                      const SizedBox(width: 30),
-                      HeaderItem(
-                        title: locals.getLocals(context).header_sign_in,
-                        isSelected: currentPage == SelectedPage.signIn,
-                        onClick: () {
-                          ref.read(headerStateProvider.notifier).state = SelectedPage.signIn;
-                        },
-                      ),
-                      const SizedBox(width: 30),
-                      HeaderItem(
-                        title: locals.getLocals(context).header_auth,
-                        isSelected: currentPage == SelectedPage.auth,
-                        onClick: () {
-                          ref.read(headerStateProvider.notifier).state = SelectedPage.auth;
-                        },
-                      ),
-                      const SizedBox(width: 10),
-                    ],
-                  ),
-                ],
-              ),
+          SizedBox(
+            width: 1200,
+            child: Row(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                HeaderHomeItem(
+                  onClick: () {
+                    ref.read(headerStateProvider.notifier).state = SelectedPage.home;
+                  },
+                ),
+                Row(
+                  children: [
+                    HeaderItem(
+                      title: locals.getLocals(context).header_about_us,
+                      isSelected: currentPage == SelectedPage.aboutUs,
+                      onClick: () {
+                        ref.read(headerStateProvider.notifier).state = SelectedPage.aboutUs;
+                      },
+                    ),
+                    const SizedBox(width: 30),
+                    HeaderItem(
+                      title: locals.getLocals(context).header_sign_in,
+                      isSelected: currentPage == SelectedPage.signIn,
+                      onClick: () {
+                        ref.read(headerStateProvider.notifier).state = SelectedPage.signIn;
+                      },
+                    ),
+                    const SizedBox(width: 30),
+                    HeaderItem(
+                      title: locals.getLocals(context).header_auth,
+                      isSelected: currentPage == SelectedPage.auth,
+                      onClick: () {
+                        ref.read(headerStateProvider.notifier).state = SelectedPage.auth;
+                      },
+                    ),
+                  ],
+                ),
+              ],
             ),
           ),
         ],

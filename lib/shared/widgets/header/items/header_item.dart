@@ -51,6 +51,7 @@ class _State extends ConsumerState<HeaderItem> with SingleTickerProviderStateMix
           child: IntrinsicWidth(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
               children: [
                 Text(
                   widget.title,
