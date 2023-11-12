@@ -18,8 +18,6 @@ class HomePage extends ConsumerStatefulWidget {
 }
 
 class _State extends ConsumerState<HomePage> with SingleTickerProviderStateMixin {
-  double opacity = 0;
-
 // Just a simple opacity animation.
   late final AnimationController animationController = AnimationController(
     vsync: this,
@@ -27,7 +25,7 @@ class _State extends ConsumerState<HomePage> with SingleTickerProviderStateMixin
   );
   late final Animation<double> fadeInAnimation = Tween(begin: 0.0, end: 1.0).animate(
     CurvedAnimation(parent: animationController, curve: Curves.easeInOut),
-  )..addListener(() => setState(() => opacity = fadeInAnimation.value));
+  )..addListener(() => setState(() {}));
 
   // TODO Gérer ça proprement nom d'une chienne.
   final List<Widget> contents = [
@@ -40,8 +38,6 @@ class _State extends ConsumerState<HomePage> with SingleTickerProviderStateMixin
     super.initState();
     if (widget.shouldSkipAnimation == false) {
       startAnimation();
-    } else {
-      opacity = 1;
     }
   }
 
@@ -54,13 +50,13 @@ class _State extends ConsumerState<HomePage> with SingleTickerProviderStateMixin
           children: [
             HomeBackground(skipAnimation: widget.shouldSkipAnimation),
             Opacity(
-              opacity: opacity,
+              opacity: widget.shouldSkipAnimation ? 1 : fadeInAnimation.value,
               child: const Header(),
             ),
             Padding(
               padding: const EdgeInsets.only(top: 80),
               child: Opacity(
-                opacity: opacity,
+                opacity: widget.shouldSkipAnimation ? 1 : fadeInAnimation.value,
                 child: ListView.builder(
                   itemCount: contents.length,
                   itemBuilder: (context, index) {

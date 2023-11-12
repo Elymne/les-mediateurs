@@ -25,11 +25,70 @@ class _State extends ConsumerState<TrendingList> {
     final size = MediaQuery.of(context).size;
 
     if (size.width < mediumScreenCapWidth && size.width >= smallScreenCapWith) {
-      return SizedBox();
+      final double scaleFactor = ((size.width - 800) / 5) / 100;
+
+      return Container(
+        color: Colors.white,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisSize: MainAxisSize.max,
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 40),
+              child: SizedBox(
+                height: 500,
+                width: size.width - 80,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const SizedBox(height: 20),
+                    const Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Icon(Icons.trending_up, size: 40),
+                        SizedBox(width: 10),
+                        Text(
+                          'Contenu du moment',
+                          style: TextStyle(
+                            fontSize: 20,
+                            color: Colors.black,
+                            fontWeight: FontWeight.w900,
+                            wordSpacing: 0,
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 20),
+                    Expanded(
+                      child: GridView.builder(
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2,
+                          mainAxisSpacing: 50.0,
+                          crossAxisSpacing: 50.0,
+                          childAspectRatio: 4 + (2 * scaleFactor),
+                        ),
+                        physics: const NeverScrollableScrollPhysics(),
+                        shrinkWrap: true,
+                        itemCount: 6,
+                        itemBuilder: (BuildContext context, int index) {
+                          return TrendingItem(
+                            index: index,
+                          );
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+      );
     }
 
     if (size.width < smallScreenCapWith) {
-      return SizedBox();
+      return const SizedBox();
     }
 
     return Container(
@@ -41,17 +100,47 @@ class _State extends ConsumerState<TrendingList> {
           SizedBox(
             width: largeScreenDisplayWidth,
             height: 400,
-            child: GridView.builder(
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 3,
-                mainAxisSpacing: 10.0,
-                crossAxisSpacing: 10.0,
-                childAspectRatio: 2,
-              ),
-              itemCount: 6,
-              itemBuilder: (BuildContext context, int index) {
-                return TrendingItem();
-              },
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const SizedBox(height: 20),
+                const Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Icon(Icons.trending_up, size: 40),
+                    SizedBox(width: 10),
+                    Text(
+                      'Contenu du moment',
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.black,
+                        fontWeight: FontWeight.w900,
+                        wordSpacing: 0,
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 20),
+                Expanded(
+                  child: GridView.builder(
+                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 3,
+                      mainAxisSpacing: 30.0,
+                      crossAxisSpacing: 20.0,
+                      childAspectRatio: 3.6,
+                    ),
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemCount: 6,
+                    itemBuilder: (BuildContext context, int index) {
+                      return TrendingItem(
+                        index: index,
+                      );
+                    },
+                  ),
+                ),
+              ],
             ),
           ),
         ],
