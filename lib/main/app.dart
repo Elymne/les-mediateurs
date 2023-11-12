@@ -16,7 +16,7 @@ class App extends ConsumerWidget {
       title: 'apl.current.appName',
       debugShowCheckedModeBanner: false,
       home: const HomePage(
-        shouldSkipAnimation: false,
+        shouldSkipAnimation: true,
       ),
       themeMode: ThemeMode.system,
       // TODO : create preset theme data.
