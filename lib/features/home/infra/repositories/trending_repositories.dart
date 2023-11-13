@@ -20,10 +20,6 @@ class TrendingRepository extends ITrendingRepository {
       return [];
     }
 
-    for (var data in jsonResponse) {
-      final trending = Trending.fromJson(data);
-    }
-
     return jsonResponse.map((e) => Trending.fromJson(e)).toList();
   }
 }
