@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:les_mediateurs/shared/data/local/locals.dart';
-import 'package:les_mediateurs/shared/domain/providers/locals_provider/locals_provider.dart';
+import 'package:les_mediateurs/shared/l10n/locals.dart';
+import 'package:les_mediateurs/shared/l10n/providers/locals_provider.dart';
 
 class HeaderHomeItemReduced extends ConsumerStatefulWidget {
   final Function() onClick;

@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:les_mediateurs/features/home/domain/models/trending.dart';
 
 class TrendingItem extends ConsumerStatefulWidget {
-  final int index;
+  final int number;
+  final Trending trending;
 
   const TrendingItem({
     super.key,
-    required this.index,
+    required this.number,
+    required this.trending,
   });
 
   @override
@@ -47,7 +50,7 @@ class _State extends ConsumerState<TrendingItem> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    "${widget.index + 1}",
+                    "${widget.number}",
                     style: TextStyle(
                       fontSize: 30,
                       color: Colors.grey.shade500,
@@ -57,17 +60,17 @@ class _State extends ConsumerState<TrendingItem> {
                 ],
               ),
               const SizedBox(width: 30),
-              const Expanded(
+              Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(height: 10),
+                    const SizedBox(height: 10),
                     Text(
-                      "Le titre d'un bidule.",
+                      widget.trending.title,
                       maxLines: 2,
                       softWrap: true,
                       overflow: TextOverflow.ellipsis,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 20,
                         color: Colors.black,
                         fontWeight: FontWeight.w900,
@@ -75,23 +78,23 @@ class _State extends ConsumerState<TrendingItem> {
                       ),
                     ),
                     Text(
-                      "Culturel",
-                      style: TextStyle(
+                      widget.trending.type,
+                      style: const TextStyle(
                         fontSize: 18,
                         color: Colors.grey,
                         fontWeight: FontWeight.w400,
                       ),
                     ),
-                    Expanded(child: SizedBox()),
+                    const Expanded(child: SizedBox()),
                     Text(
-                      "27 septembre 2022",
-                      style: TextStyle(
+                      widget.trending.created.toString(),
+                      style: const TextStyle(
                         fontSize: 16,
                         color: Colors.black,
                         fontWeight: FontWeight.w300,
                       ),
                     ),
-                    SizedBox(height: 10),
+                    const SizedBox(height: 10),
                   ],
                 ),
               ),

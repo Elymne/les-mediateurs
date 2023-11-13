@@ -30,7 +30,13 @@ class _State extends ConsumerState<HomePage> with SingleTickerProviderStateMixin
   // TODO Gérer ça proprement nom d'une chienne.
   final List<Widget> contents = [
     const CatchTextContainer(),
+    const Divider(height: 1, color: Colors.grey),
     const TrendingList(),
+    const Divider(height: 1, color: Colors.grey),
+    Container(
+      height: 1000,
+      color: Colors.white,
+    ),
   ];
 
   @override

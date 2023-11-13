@@ -1,9 +1,9 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:les_mediateurs/configurations/constantes.dart';
-import 'package:les_mediateurs/shared/data/local/locals.dart';
-import 'package:les_mediateurs/shared/domain/providers/locals_provider/locals_provider.dart';
+import 'package:les_mediateurs/core/constantes.dart';
+import 'package:les_mediateurs/shared/l10n/locals.dart';
+import 'package:les_mediateurs/shared/l10n/providers/locals_provider.dart';
 import 'package:les_mediateurs/shared/widgets/animated_text/animated_text.dart';
 import 'package:uuid/uuid.dart';
 
