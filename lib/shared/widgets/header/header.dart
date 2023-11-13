@@ -28,22 +28,14 @@ class _State extends ConsumerState<Header> {
       return Container(
         height: 80,
         width: size.width,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           color: Colors.white,
-          border: const Border(
+          border: Border(
             bottom: BorderSide(
               width: 0.2,
               color: Colors.black,
             ),
           ),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey.withOpacity(0.3),
-              spreadRadius: 3,
-              blurRadius: 5,
-              offset: const Offset(0, 2), // changes position of shadow
-            ),
-          ],
         ),
         child: Stack(
           children: [
@@ -74,22 +66,14 @@ class _State extends ConsumerState<Header> {
       return Container(
         height: 80,
         width: size.width,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           color: Colors.white,
-          border: const Border(
+          border: Border(
             bottom: BorderSide(
               width: 0.2,
               color: Colors.black,
             ),
           ),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey.withOpacity(0.3),
-              spreadRadius: 3,
-              blurRadius: 5,
-              offset: const Offset(0, 2), // changes position of shadow
-            ),
-          ],
         ),
         child: Row(
           children: [
@@ -111,22 +95,14 @@ class _State extends ConsumerState<Header> {
     return Container(
       height: 80,
       width: size.width,
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: Colors.white,
-        border: const Border(
+        border: Border(
           bottom: BorderSide(
             width: 0.2,
             color: Colors.black,
           ),
         ),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.3),
-            spreadRadius: 3,
-            blurRadius: 5,
-            offset: const Offset(0, 2), // changes position of shadow
-          ),
-        ],
       ),
       child: Row(
         mainAxisSize: MainAxisSize.max,
