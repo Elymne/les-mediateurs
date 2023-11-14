@@ -38,6 +38,11 @@ class ContentMiniaturisedListNotifier extends StateNotifier<ContentMiniaturisedL
     state = ContentMiniaturisedListState(currentPage: page, contentMiniaturiseds: [], status: EnumStateStatus.loading);
 
     final contents = await _getContentMiniaturisedByPageUsecase.perform(page);
+
+    if (contents.isEmpty) {
+      state = ContentMiniaturisedListState(currentPage: page, contentMiniaturiseds: [], status: EnumStateStatus.error);
+    }
+
     state = ContentMiniaturisedListState(currentPage: page, contentMiniaturiseds: contents, status: EnumStateStatus.sucess);
   }
 }

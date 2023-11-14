@@ -30,15 +30,6 @@ class _State extends ConsumerState<HomePage> with SingleTickerProviderStateMixin
 
   bool canDisplayContent = false;
 
-  // TODO Gérer ça proprement nom d'une chienne.
-  final List<Widget> contents = [
-    const CatchTextContainer(),
-    const Divider(height: 1, color: Colors.grey),
-    const TrendingList(),
-    const Divider(height: 1, color: Colors.grey),
-    const ContentMiniaturisedList(),
-  ];
-
   @override
   void initState() {
     super.initState();
@@ -79,16 +70,20 @@ class _State extends ConsumerState<HomePage> with SingleTickerProviderStateMixin
                 child: const Header(),
               ),
             if (canDisplayContent)
-              Padding(
-                padding: const EdgeInsets.only(top: 80),
-                child: Opacity(
-                  opacity: fadeInAnimation.value,
-                  child: ListView.builder(
-                    shrinkWrap: true,
-                    itemCount: contents.length,
-                    itemBuilder: (context, index) {
-                      return contents[index];
-                    },
+              SingleChildScrollView(
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 80),
+                  child: Opacity(
+                    opacity: fadeInAnimation.value,
+                    child: Column(
+                      children: [
+                        const CatchTextContainer(),
+                        Divider(height: 1, color: Colors.grey.shade100),
+                        const TrendingList(),
+                        Divider(height: 1, color: Colors.grey.shade100),
+                        const ContentMiniaturisedList(),
+                      ],
+                    ),
                   ),
                 ),
               ),
