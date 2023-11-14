@@ -65,11 +65,6 @@ class _State extends ConsumerState<HomePage> with SingleTickerProviderStateMixin
               },
             ),
             if (canDisplayContent)
-              Opacity(
-                opacity: fadeInAnimation.value,
-                child: const Header(),
-              ),
-            if (canDisplayContent)
               SingleChildScrollView(
                 child: Padding(
                   padding: const EdgeInsets.only(top: 80),
@@ -86,6 +81,13 @@ class _State extends ConsumerState<HomePage> with SingleTickerProviderStateMixin
                     ),
                   ),
                 ),
+              ),
+
+            ///
+            if (canDisplayContent)
+              Opacity(
+                opacity: fadeInAnimation.value,
+                child: const Header(),
               ),
           ],
         ),
