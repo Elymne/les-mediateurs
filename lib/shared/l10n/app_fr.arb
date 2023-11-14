@@ -6,5 +6,7 @@
     "header_sign_in": "S'inscrire",
     "header_auth": "Se connecter",
     "@HOME_PAGE": {},
-    "home_page_app_name": "LES MÉDIATEURS"
+    "home_page_app_name": "LES MÉDIATEURS",
+    "home_page_catch_phrase": "Bienvenue",
+    "home_page_catch_phrase_bis": "Retrouves les dernières informations des médiateurs"
 }

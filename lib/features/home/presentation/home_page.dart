@@ -27,6 +27,8 @@ class _State extends ConsumerState<HomePage> with SingleTickerProviderStateMixin
     CurvedAnimation(parent: animationController, curve: Curves.easeInOut),
   )..addListener(() => setState(() {}));
 
+  bool canDisplayContent = false;
+
   // TODO Gérer ça proprement nom d'une chienne.
   final List<Widget> contents = [
     const CatchTextContainer(),
@@ -42,8 +44,10 @@ class _State extends ConsumerState<HomePage> with SingleTickerProviderStateMixin
   @override
   void initState() {
     super.initState();
-    if (widget.shouldSkipAnimation == false) {
-      startAnimation();
+
+    if (widget.shouldSkipAnimation == true) {
+      animationController.forward();
+      canDisplayContent = true;
     }
   }
 
@@ -51,21 +55,10 @@ class _State extends ConsumerState<HomePage> with SingleTickerProviderStateMixin
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
 
+    /// TODO Manage or not very small screen.
     if (size.width < 360) {
-      return const Scaffold(
-        backgroundColor: Colors.black,
-        body: SafeArea(
-          child: Center(
-            child: Text(
-              "(:",
-              style: TextStyle(
-                fontSize: 100,
-                color: Colors.white,
-              ),
-            ),
-          ),
-        ),
-      );
+      // Hideux n'est-ce-pas.
+      return const Scaffold(backgroundColor: Colors.black, body: SafeArea(child: Center(child: Text("(:", style: TextStyle(fontSize: 100, color: Colors.white)))));
     }
 
     return Scaffold(
@@ -73,33 +66,37 @@ class _State extends ConsumerState<HomePage> with SingleTickerProviderStateMixin
       body: SafeArea(
         child: Stack(
           children: [
-            HomeBackground(skipAnimation: widget.shouldSkipAnimation),
-            Opacity(
-              opacity: widget.shouldSkipAnimation ? 1 : fadeInAnimation.value,
-              child: const Header(),
+            HomeBackground(
+              skipAnimation: widget.shouldSkipAnimation,
+              onAnimationFinished: () {
+                animationController.forward();
+                setState(() {
+                  canDisplayContent = true;
+                });
+              },
             ),
-            Padding(
-              padding: const EdgeInsets.only(top: 80),
-              child: Opacity(
-                opacity: widget.shouldSkipAnimation ? 1 : fadeInAnimation.value,
-                child: ListView.builder(
-                  shrinkWrap: true,
-                  itemCount: contents.length,
-                  itemBuilder: (context, index) {
-                    return contents[index];
-                  },
+            if (canDisplayContent)
+              Opacity(
+                opacity: fadeInAnimation.value,
+                child: const Header(),
+              ),
+            if (canDisplayContent)
+              Padding(
+                padding: const EdgeInsets.only(top: 80),
+                child: Opacity(
+                  opacity: fadeInAnimation.value,
+                  child: ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: contents.length,
+                    itemBuilder: (context, index) {
+                      return contents[index];
+                    },
+                  ),
                 ),
               ),
-            ),
           ],
         ),
       ),
     );
-  }
-
-  ///
-  Future startAnimation() async {
-    await Future.delayed(const Duration(milliseconds: 2200));
-    animationController.forward();
   }
 }

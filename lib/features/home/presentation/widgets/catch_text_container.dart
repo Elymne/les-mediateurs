@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:les_mediateurs/core/constantes.dart';
 import 'package:les_mediateurs/shared/l10n/locals.dart';
 import 'package:les_mediateurs/shared/l10n/providers/locals_provider.dart';
+import 'package:les_mediateurs/shared/widgets/animated_text/animated_text.dart';
 
 class CatchTextContainer extends ConsumerStatefulWidget {
   const CatchTextContainer({super.key});
@@ -25,26 +26,28 @@ class _State extends ConsumerState<CatchTextContainer> {
     final size = MediaQuery.of(context).size;
 
     if (size.width < mediumScreenCapWidth && size.width >= smallScreenCapWith) {
-      return const SizedBox(
+      return SizedBox(
         height: 300,
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 60),
+          padding: const EdgeInsets.symmetric(horizontal: 60),
           child: Column(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                "Abdoulah mon frérot",
-                style: TextStyle(
+              AnimatedText(
+                data: locals.getLocals(context).home_page_catch_phrase,
+                duration: const Duration(milliseconds: 800),
+                style: const TextStyle(
                   color: Colors.white,
                   fontSize: 60,
                   fontWeight: FontWeight.w300,
                 ),
               ),
-              Text(
-                "Retrouve les dernières info sur Jésus au ski, zébi il l'a volé mes airpods cet enculé...",
-                style: TextStyle(
+              AnimatedText(
+                data: locals.getLocals(context).home_page_catch_phrase_bis,
+                duration: const Duration(milliseconds: 1200),
+                style: const TextStyle(
                   color: Colors.white,
                   fontSize: 30,
                   fontWeight: FontWeight.w300,
@@ -57,15 +60,16 @@ class _State extends ConsumerState<CatchTextContainer> {
     }
 
     if (size.width < smallScreenCapWith) {
-      return const SizedBox(
+      return SizedBox(
         height: 200,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           mainAxisSize: MainAxisSize.max,
           children: [
-            Text(
-              "Abdoulah mon frérot",
-              style: TextStyle(
+            AnimatedText(
+              data: locals.getLocals(context).home_page_catch_phrase,
+              duration: const Duration(milliseconds: 800),
+              style: const TextStyle(
                 color: Colors.white,
                 fontSize: 40,
                 fontWeight: FontWeight.w300,
@@ -76,7 +80,7 @@ class _State extends ConsumerState<CatchTextContainer> {
       );
     }
 
-    return const Row(
+    return Row(
       mainAxisSize: MainAxisSize.max,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -88,17 +92,19 @@ class _State extends ConsumerState<CatchTextContainer> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                "Abdoulah mon frérot",
-                style: TextStyle(
+              AnimatedText(
+                data: locals.getLocals(context).home_page_catch_phrase,
+                duration: const Duration(milliseconds: 800),
+                style: const TextStyle(
                   color: Colors.white,
                   fontSize: 80,
                   fontWeight: FontWeight.w300,
                 ),
               ),
-              Text(
-                "Retrouve les dernières info sur Jésus au ski, zébi il l'a volé mes airpods cet enculé...",
-                style: TextStyle(
+              AnimatedText(
+                data: locals.getLocals(context).home_page_catch_phrase_bis,
+                duration: const Duration(milliseconds: 1200),
+                style: const TextStyle(
                   color: Colors.white,
                   fontSize: 40,
                   fontWeight: FontWeight.w300,
