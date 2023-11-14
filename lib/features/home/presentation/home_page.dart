@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:les_mediateurs/features/home/presentation/widgets/catch_text_container.dart';
+import 'package:les_mediateurs/features/home/presentation/widgets/content_miniaturised_list.dart';
 import 'package:les_mediateurs/features/home/presentation/widgets/home_background.dart';
 import 'package:les_mediateurs/features/home/presentation/widgets/trending_grid.dart';
 import 'package:les_mediateurs/shared/widgets/header/header.dart';
@@ -35,10 +36,7 @@ class _State extends ConsumerState<HomePage> with SingleTickerProviderStateMixin
     const Divider(height: 1, color: Colors.grey),
     const TrendingList(),
     const Divider(height: 1, color: Colors.grey),
-    Container(
-      height: 1000,
-      color: Colors.white,
-    ),
+    const ContentMiniaturisedList(),
   ];
 
   @override

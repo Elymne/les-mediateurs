@@ -11,13 +11,13 @@ class TrendingGridNotifier extends StateNotifier<List<Trending>> {
 
   TrendingGridNotifier(this._getCurrentTrendingsUsecase) : super([]);
 
-  void loadTrendings() async {
+  Future loadTrendings() async {
     final trendings = await _getCurrentTrendingsUsecase.perform();
     state = trendings;
   }
 
   /// TODO: Débile, j'aime bien. (C'est juste pour mon cerveau malade pour plus tard).
-  void reloadTrendings() async {
+  Future reloadTrendings() async {
     final trendings = await _getCurrentTrendingsUsecase.perform();
     state = trendings;
   }
