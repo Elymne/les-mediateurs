@@ -9,9 +9,11 @@ import 'package:uuid/uuid.dart';
 
 class HomeBackground extends ConsumerStatefulWidget {
   final bool skipAnimation;
+  final void Function() onAnimationFinished;
 
   const HomeBackground({
     super.key,
+    required this.onAnimationFinished,
     this.skipAnimation = false,
   });
 
@@ -34,7 +36,13 @@ class _State extends ConsumerState<HomeBackground> with SingleTickerProviderStat
   late final AnimationController animationController = AnimationController(vsync: this, duration: const Duration(milliseconds: 800));
   late final Animation<double> fadeOutAnimation = Tween(begin: 1.0, end: 0.0).animate(
     CurvedAnimation(parent: animationController, curve: Curves.easeInOut),
-  )..addListener(() => setState(() {}));
+  )
+    ..addListener(() => setState(() {}))
+    ..addStatusListener((status) {
+      if (status == AnimationStatus.completed) {
+        widget.onAnimationFinished();
+      }
+    });
 
   // 2200 mms.
   bool isAnimationOver = false;

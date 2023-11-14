@@ -87,7 +87,7 @@ class _State extends ConsumerState<TrendingItem> {
                     ),
                     const Expanded(child: SizedBox()),
                     Text(
-                      widget.trending.created.toString(),
+                      '${widget.trending.created.day}-${widget.trending.created.month}-${widget.trending.created.year}',
                       style: const TextStyle(
                         fontSize: 16,
                         color: Colors.black,

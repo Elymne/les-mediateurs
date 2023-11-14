@@ -13,15 +13,6 @@ class TrendingList extends ConsumerStatefulWidget {
 }
 
 class _State extends ConsumerState<TrendingList> {
-  final List<String> data = [
-    "CACA",
-    "TOILETTE",
-    "BITE ENORME",
-    "CHIASSE GALACTIQUE",
-    "ETRON LUNAIRE",
-    "PARTOUZE AVEC VIEUX",
-  ];
-
   @override
   void initState() {
     super.initState();
@@ -142,7 +133,7 @@ class _State extends ConsumerState<TrendingList> {
         child: Padding(
           padding: const EdgeInsets.all(20.0),
           child: SizedBox(
-            height: 1200,
+            height: 900,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.max,
