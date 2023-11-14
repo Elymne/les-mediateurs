@@ -21,37 +21,37 @@ class TrendingRemoteDatasource extends RemoteDataSource {
       data: [
         {
           'id': uuid.v4(),
-          'title': 'Gros jambon de paris dans la sèvre',
+          'title': 'Lorem ipsum dolor sit amet, consectetur adipiscing.',
           'type': 'article',
           'created': '1969-07-20 20:18:04Z',
         },
         {
           'id': uuid.v4(),
-          'title': 'Gendarme joue à pan-pan la police tuer tuer débilous',
+          'title': 'Maecenas consectetur magna a scelerisque tempor. Mauris consequat ut urna.',
           'type': 'article',
           'created': '1969-07-20 20:18:04Z',
         },
         {
           'id': uuid.v4(),
-          'title': "J'ai plus de chips, comment j'vais faire ?",
+          'title': "Etiam cursus eu libero iaculis tincidunt. Etiam in lacus id lectus elementum tempor.",
           'type': 'article',
           'created': '1969-07-20 20:18:04Z',
         },
         {
           'id': uuid.v4(),
-          'title': "J'ai pêché un énorme poisson dans la graisse de porc utilisé pour faire les frites Belges",
+          'title': "Nunc at malesuada ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae.",
           'type': 'article',
           'created': '1969-07-20 20:18:04Z',
         },
         {
           'id': uuid.v4(),
-          'title': "J'ai rien à dire, bon bah..",
+          'title': "Sed quis est eros. Curabitur tempor vel turpis non semper.",
           'type': 'article',
           'created': '1969-07-20 20:18:04Z',
         },
         {
           'id': uuid.v4(),
-          'title': 'Article très intéressant',
+          'title': 'Cras nulla dolor, elementum id enim ultricies, posuere sollicitudin ante. Fusce sagittis.',
           'type': 'article',
           'created': '1969-07-20 20:18:04Z',
         },
