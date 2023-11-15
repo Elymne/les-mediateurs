@@ -1,4 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:les_mediateurs/core/log/logger.dart';
 import 'package:les_mediateurs/core/usecase/usecase.dart';
 import 'package:les_mediateurs/data/repositories/trending_repositories.dart';
 import 'package:les_mediateurs/domain/models/trending.dart';
@@ -18,12 +19,12 @@ class GetCurrentTrendingsUsecase extends UsecaseNoParams<List<Trending>> {
       final trendings = await trendingRepository.getCurrentTrendings();
 
       if (trendings.length > 6) {
-        // TODO: warning log, too much element returned by the getCurrentTrendings() method.
+        logger.w('Too much data received from trendings API, should be 6. It was ${trendings.length}.');
       }
 
       return Success(value: trendings);
     } on Exception catch (e) {
-      // TODO: log error.
+      logger.e(e);
       return Failure(exception: e);
     }
   }

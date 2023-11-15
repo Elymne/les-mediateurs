@@ -7,14 +7,18 @@ class CustomGrid extends StatelessWidget {
   final double margeBetweenItem;
   final Widget Function(int index) builder;
 
-  const CustomGrid({super.key, required this.itemPerRow, required this.itemCount, required this.builder, this.rowMargin = 0, this.margeBetweenItem = 0});
+  const CustomGrid({
+    super.key,
+    required this.itemPerRow,
+    required this.itemCount,
+    required this.builder,
+    this.rowMargin = 0,
+    this.margeBetweenItem = 0,
+  });
 
   @override
   Widget build(BuildContext context) {
     final int totalRow = itemCount ~/ itemPerRow;
-
-    final int orphantItem = itemCount % itemPerRow;
-
     final List<Widget> columnChildren = [];
 
     for (int i = 0; i < totalRow; i++) {
@@ -22,7 +26,6 @@ class CustomGrid extends StatelessWidget {
 
       for (int j = 0; j < itemPerRow; j++) {
         rowItems.add(Expanded(child: builder((i * itemPerRow) + j)));
-
         if (margeBetweenItem > 0 && (j != 0 || j != itemPerRow - 1)) {
           rowItems.add(SizedBox(width: margeBetweenItem));
         }
@@ -38,6 +41,9 @@ class CustomGrid extends StatelessWidget {
         columnChildren.add(SizedBox(height: rowMargin));
       }
     }
+
+    //TODO Gérer les items en trop.
+    //final int orphantItem = itemCount % itemPerRow;
 
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,

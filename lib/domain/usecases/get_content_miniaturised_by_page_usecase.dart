@@ -1,4 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:les_mediateurs/core/log/logger.dart';
 import 'package:les_mediateurs/core/usecase/usecase.dart';
 import 'package:les_mediateurs/data/repositories/content_miniaturised_repository.dart';
 import 'package:les_mediateurs/domain/models/content_miniaturised.dart';
@@ -18,12 +19,12 @@ class GetContentMiniaturisedByPageUsecase extends Usecase<List<ContentMiniaturis
       final contentMiniatuiseds = await contentMiniaturisedRepository.getContentMiniaturiseds(params.page);
 
       if (contentMiniatuiseds.length > 10) {
-        //TODO Log warning.
+        logger.w('Too much data received from content API, should be 10. It was ${contentMiniatuiseds.length}.');
       }
 
       return Success(value: contentMiniatuiseds);
     } on Exception catch (e) {
-      //TODO: log
+      logger.e(e);
       return Failure(exception: e);
     }
   }

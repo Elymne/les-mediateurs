@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:les_mediateurs/core/log/logger.dart';
 
 class Locals {
   /// Set the current langage.
@@ -10,9 +11,7 @@ class Locals {
     try {
       AppLocalizations.delegate.load(locale);
     } catch (e) {
-      if (kDebugMode) {
-        print(e);
-      }
+      if (kDebugMode) logger.e(e);
     }
   }
 
