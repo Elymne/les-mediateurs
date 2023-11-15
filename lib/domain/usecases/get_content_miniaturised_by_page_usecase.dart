@@ -7,19 +7,30 @@ final getContentMiniaturisedByPageUsecaseProvider = Provider<GetContentMiniaturi
   return GetContentMiniaturisedByPageUsecase(contentMiniaturisedRepository: ref.read(contentMiniaturisedRepositoryProvider));
 });
 
-class GetContentMiniaturisedByPageUsecase extends Usecase<List<ContentMiniaturised>, int> {
+class GetContentMiniaturisedByPageUsecase extends Usecase<List<ContentMiniaturised>, GetContentMiniaturisedByPageUsecaseParams> {
   final ContentMiniaturisedRepository contentMiniaturisedRepository;
 
   GetContentMiniaturisedByPageUsecase({required this.contentMiniaturisedRepository});
 
   @override
-  Future<List<ContentMiniaturised>> perform(int params) async {
-    final contentMiniatuiseds = await contentMiniaturisedRepository.getContentMiniaturiseds(params);
+  Future<Result<List<ContentMiniaturised>>> perform(GetContentMiniaturisedByPageUsecaseParams params) async {
+    try {
+      final contentMiniatuiseds = await contentMiniaturisedRepository.getContentMiniaturiseds(params.page);
 
-    if (contentMiniatuiseds.length > 10) {
-      //TODO remove or do something I don't know.
+      if (contentMiniatuiseds.length > 10) {
+        //TODO Log warning.
+      }
+
+      return Success(value: contentMiniatuiseds);
+    } on Exception catch (e) {
+      //TODO: log
+      return Failure(exception: e);
     }
-
-    return contentMiniatuiseds;
   }
+}
+
+class GetContentMiniaturisedByPageUsecaseParams extends Params {
+  final int page;
+
+  GetContentMiniaturisedByPageUsecaseParams({required this.page});
 }

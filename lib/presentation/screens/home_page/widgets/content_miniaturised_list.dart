@@ -27,7 +27,7 @@ class _State extends ConsumerState<ContentMiniaturisedList> {
     final size = MediaQuery.of(context).size;
     final contentMiniaturisedListState = ref.watch(contentMiniaturisedListStateProvider);
 
-    if (contentMiniaturisedListState.status == EnumStateStatus.loading || contentMiniaturisedListState.status == EnumStateStatus.init) {
+    if (contentMiniaturisedListState.status == StateStatus.loading || contentMiniaturisedListState.status == StateStatus.init) {
       return Container(
         color: Colors.white,
         height: 600,

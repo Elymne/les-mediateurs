@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:les_mediateurs/core/constants.dart';
-import 'package:les_mediateurs/domain/models/trending.dart';
+import 'package:les_mediateurs/core/state/enum_state_status.dart';
 import 'package:les_mediateurs/presentation/screens/home_page/providers/trending_grid_state_provider.dart';
 import 'package:les_mediateurs/presentation/screens/home_page/widgets/trending_item.dart';
 
@@ -22,9 +22,9 @@ class _State extends ConsumerState<TrendingList> {
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
-    final List<Trending> trendings = ref.watch(trendingGridStateProvider);
+    final TrendingGridState state = ref.watch(trendingGridStateProvider);
 
-    if (trendings.isEmpty) {
+    if (state.status == StateStatus.loading) {
       return Container(
         height: 400,
         color: Colors.white,
@@ -70,14 +70,14 @@ class _State extends ConsumerState<TrendingList> {
                     Expanded(
                       child: TrendingItem(
                         number: 1,
-                        trending: trendings[0],
+                        trending: state.trendings[0],
                       ),
                     ),
                     const SizedBox(width: 20),
                     Expanded(
                       child: TrendingItem(
                         number: 2,
-                        trending: trendings[1],
+                        trending: state.trendings[1],
                       ),
                     ),
                   ],
@@ -89,14 +89,14 @@ class _State extends ConsumerState<TrendingList> {
                     Expanded(
                       child: TrendingItem(
                         number: 3,
-                        trending: trendings[2],
+                        trending: state.trendings[2],
                       ),
                     ),
                     const SizedBox(width: 20),
                     Expanded(
                       child: TrendingItem(
                         number: 4,
-                        trending: trendings[3],
+                        trending: state.trendings[3],
                       ),
                     ),
                   ],
@@ -108,14 +108,14 @@ class _State extends ConsumerState<TrendingList> {
                     Expanded(
                       child: TrendingItem(
                         number: 5,
-                        trending: trendings[4],
+                        trending: state.trendings[4],
                       ),
                     ),
                     const SizedBox(width: 20),
                     Expanded(
                       child: TrendingItem(
                         number: 6,
-                        trending: trendings[5],
+                        trending: state.trendings[5],
                       ),
                     ),
                   ],
@@ -159,32 +159,32 @@ class _State extends ConsumerState<TrendingList> {
                 const SizedBox(height: 30),
                 TrendingItem(
                   number: 1,
-                  trending: trendings[0],
+                  trending: state.trendings[0],
                 ),
                 const SizedBox(height: 10),
                 TrendingItem(
                   number: 2,
-                  trending: trendings[1],
+                  trending: state.trendings[1],
                 ),
                 const SizedBox(height: 10),
                 TrendingItem(
                   number: 3,
-                  trending: trendings[2],
+                  trending: state.trendings[2],
                 ),
                 const SizedBox(height: 10),
                 TrendingItem(
                   number: 4,
-                  trending: trendings[3],
+                  trending: state.trendings[3],
                 ),
                 const SizedBox(height: 10),
                 TrendingItem(
                   number: 5,
-                  trending: trendings[4],
+                  trending: state.trendings[4],
                 ),
                 const SizedBox(height: 10),
                 TrendingItem(
                   number: 6,
-                  trending: trendings[5],
+                  trending: state.trendings[5],
                 ),
                 const SizedBox(height: 10),
               ],
@@ -231,21 +231,21 @@ class _State extends ConsumerState<TrendingList> {
                     Expanded(
                       child: TrendingItem(
                         number: 1,
-                        trending: trendings[0],
+                        trending: state.trendings[0],
                       ),
                     ),
                     const SizedBox(width: 20),
                     Expanded(
                       child: TrendingItem(
                         number: 2,
-                        trending: trendings[1],
+                        trending: state.trendings[1],
                       ),
                     ),
                     const SizedBox(width: 20),
                     Expanded(
                       child: TrendingItem(
                         number: 3,
-                        trending: trendings[2],
+                        trending: state.trendings[2],
                       ),
                     ),
                   ],
@@ -257,21 +257,21 @@ class _State extends ConsumerState<TrendingList> {
                     Expanded(
                       child: TrendingItem(
                         number: 4,
-                        trending: trendings[3],
+                        trending: state.trendings[3],
                       ),
                     ),
                     const SizedBox(width: 20),
                     Expanded(
                       child: TrendingItem(
                         number: 5,
-                        trending: trendings[4],
+                        trending: state.trendings[4],
                       ),
                     ),
                     const SizedBox(width: 20),
                     Expanded(
                       child: TrendingItem(
                         number: 6,
-                        trending: trendings[5],
+                        trending: state.trendings[5],
                       ),
                     ),
                   ],

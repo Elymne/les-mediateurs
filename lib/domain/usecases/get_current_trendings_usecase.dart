@@ -13,13 +13,18 @@ class GetCurrentTrendingsUsecase extends UsecaseNoParams<List<Trending>> {
   GetCurrentTrendingsUsecase({required this.trendingRepository});
 
   @override
-  Future<List<Trending>> perform() async {
-    final trendings = await trendingRepository.getCurrentTrendings();
+  Future<Result<List<Trending>>> perform() async {
+    try {
+      final trendings = await trendingRepository.getCurrentTrendings();
 
-    if (trendings.length > 6) {
-      //TODO remove.
+      if (trendings.length > 6) {
+        // TODO: warning log, too much element returned by the getCurrentTrendings() method.
+      }
+
+      return Success(value: trendings);
+    } on Exception catch (e) {
+      // TODO: log error.
+      return Failure(exception: e);
     }
-
-    return trendings;
   }
 }

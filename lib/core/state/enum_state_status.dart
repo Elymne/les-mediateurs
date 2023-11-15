@@ -1,4 +1,4 @@
-enum EnumStateStatus {
+enum StateStatus {
   init,
   loading,
   error,
