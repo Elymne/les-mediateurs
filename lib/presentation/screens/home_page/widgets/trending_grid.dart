@@ -5,6 +5,7 @@ import 'package:les_mediateurs/core/constants.dart';
 import 'package:les_mediateurs/core/state/enum_state_status.dart';
 import 'package:les_mediateurs/presentation/screens/home_page/providers/trending_grid_state_provider.dart';
 import 'package:les_mediateurs/presentation/screens/home_page/widgets/trending_item.dart';
+import 'package:les_mediateurs/presentation/widgets/custom_grid/custom_grid.dart';
 
 class TrendingList extends ConsumerStatefulWidget {
   const TrendingList({super.key});
@@ -63,7 +64,6 @@ class _State extends ConsumerState<TrendingList> {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 40),
           child: SizedBox(
-            height: 600,
             width: size.width - 80,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -87,61 +87,17 @@ class _State extends ConsumerState<TrendingList> {
                   ],
                 ),
                 const SizedBox(height: 20),
-                Row(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Expanded(
-                      child: TrendingItem(
-                        number: 1,
-                        trending: state.trendings[0],
-                      ),
-                    ),
-                    const SizedBox(width: 20),
-                    Expanded(
-                      child: TrendingItem(
-                        number: 2,
-                        trending: state.trendings[1],
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 20),
-                Row(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Expanded(
-                      child: TrendingItem(
-                        number: 3,
-                        trending: state.trendings[2],
-                      ),
-                    ),
-                    const SizedBox(width: 20),
-                    Expanded(
-                      child: TrendingItem(
-                        number: 4,
-                        trending: state.trendings[3],
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 20),
-                Row(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Expanded(
-                      child: TrendingItem(
-                        number: 5,
-                        trending: state.trendings[4],
-                      ),
-                    ),
-                    const SizedBox(width: 20),
-                    Expanded(
-                      child: TrendingItem(
-                        number: 6,
-                        trending: state.trendings[5],
-                      ),
-                    ),
-                  ],
+                CustomGrid(
+                  itemPerRow: 2,
+                  itemCount: state.trendings.length,
+                  rowMargin: 20,
+                  margeBetweenItem: 10,
+                  builder: (index) {
+                    return TrendingItem(
+                      number: index + 1,
+                      trending: state.trendings[index],
+                    );
+                  },
                 ),
               ],
             ),
@@ -156,7 +112,6 @@ class _State extends ConsumerState<TrendingList> {
         child: Padding(
           padding: const EdgeInsets.all(20.0),
           child: SizedBox(
-            height: 900,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.max,
@@ -180,36 +135,18 @@ class _State extends ConsumerState<TrendingList> {
                   ],
                 ),
                 const SizedBox(height: 30),
-                TrendingItem(
-                  number: 1,
-                  trending: state.trendings[0],
+                CustomGrid(
+                  itemPerRow: 1,
+                  itemCount: state.trendings.length,
+                  rowMargin: 20,
+                  margeBetweenItem: 10,
+                  builder: (index) {
+                    return TrendingItem(
+                      number: index + 1,
+                      trending: state.trendings[index],
+                    );
+                  },
                 ),
-                const SizedBox(height: 10),
-                TrendingItem(
-                  number: 2,
-                  trending: state.trendings[1],
-                ),
-                const SizedBox(height: 10),
-                TrendingItem(
-                  number: 3,
-                  trending: state.trendings[2],
-                ),
-                const SizedBox(height: 10),
-                TrendingItem(
-                  number: 4,
-                  trending: state.trendings[3],
-                ),
-                const SizedBox(height: 10),
-                TrendingItem(
-                  number: 5,
-                  trending: state.trendings[4],
-                ),
-                const SizedBox(height: 10),
-                TrendingItem(
-                  number: 6,
-                  trending: state.trendings[5],
-                ),
-                const SizedBox(height: 10),
               ],
             ),
           ),
@@ -225,7 +162,6 @@ class _State extends ConsumerState<TrendingList> {
         children: [
           SizedBox(
             width: largeScreenDisplayWidth,
-            height: 400,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -248,56 +184,17 @@ class _State extends ConsumerState<TrendingList> {
                   ],
                 ),
                 const SizedBox(height: 30),
-                Row(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Expanded(
-                      child: TrendingItem(
-                        number: 1,
-                        trending: state.trendings[0],
-                      ),
-                    ),
-                    const SizedBox(width: 20),
-                    Expanded(
-                      child: TrendingItem(
-                        number: 2,
-                        trending: state.trendings[1],
-                      ),
-                    ),
-                    const SizedBox(width: 20),
-                    Expanded(
-                      child: TrendingItem(
-                        number: 3,
-                        trending: state.trendings[2],
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 20),
-                Row(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Expanded(
-                      child: TrendingItem(
-                        number: 4,
-                        trending: state.trendings[3],
-                      ),
-                    ),
-                    const SizedBox(width: 20),
-                    Expanded(
-                      child: TrendingItem(
-                        number: 5,
-                        trending: state.trendings[4],
-                      ),
-                    ),
-                    const SizedBox(width: 20),
-                    Expanded(
-                      child: TrendingItem(
-                        number: 6,
-                        trending: state.trendings[5],
-                      ),
-                    ),
-                  ],
+                CustomGrid(
+                  itemPerRow: 3,
+                  itemCount: state.trendings.length,
+                  rowMargin: 30,
+                  margeBetweenItem: 10,
+                  builder: (index) {
+                    return TrendingItem(
+                      number: index + 1,
+                      trending: state.trendings[index],
+                    );
+                  },
                 ),
               ],
             ),
