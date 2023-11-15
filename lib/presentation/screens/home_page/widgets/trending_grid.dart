@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:les_mediateurs/core/constants.dart';
 import 'package:les_mediateurs/core/state/enum_state_status.dart';
@@ -16,7 +17,9 @@ class _State extends ConsumerState<TrendingList> {
   @override
   void initState() {
     super.initState();
-    ref.read(trendingGridStateProvider.notifier).loadTrendings();
+    SchedulerBinding.instance.addPostFrameCallback((duration) {
+      ref.read(trendingGridStateProvider.notifier).loadTrendings();
+    });
   }
 
   @override
@@ -24,12 +27,32 @@ class _State extends ConsumerState<TrendingList> {
     final Size size = MediaQuery.of(context).size;
     final TrendingGridState state = ref.watch(trendingGridStateProvider);
 
+    if (state.status == StateStatus.init) {
+      return Container(height: 400, color: Colors.white);
+    }
+
     if (state.status == StateStatus.loading) {
       return Container(
         height: 400,
         color: Colors.white,
         child: const CircularProgressIndicator(
           color: Colors.red,
+        ),
+      );
+    }
+
+    if (state.status == StateStatus.error) {
+      return Container(
+        height: 400,
+        color: Colors.white,
+        child: Center(
+          child: Text(
+            state.errorMessage,
+            style: const TextStyle(
+              color: Colors.red,
+              fontSize: 30,
+            ),
+          ),
         ),
       );
     }
