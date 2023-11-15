@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:les_mediateurs/features/home/presentation/home_page.dart';
+import 'package:les_mediateurs/presentation/screens/home_page/home_page.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:les_mediateurs/shared/l10n/providers/locals_provider.dart';
+import 'package:les_mediateurs/core/l10n/providers/locals_provider.dart';
 
 class App extends ConsumerWidget {
   const App({Key? key}) : super(key: key);
