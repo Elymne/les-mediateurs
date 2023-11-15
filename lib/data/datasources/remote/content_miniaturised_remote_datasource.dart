@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:les_mediateurs/core/remote_data_source.dart';
+import 'package:les_mediateurs/core/datasource/remote_datasource.dart';
 import 'package:les_mediateurs/core/dio/dio_provider.dart';
 import 'package:uuid/uuid.dart';
 
@@ -8,7 +8,7 @@ final contentMiniaturisedRemoteDatasourceProvider = Provider<ContentMiniaturised
   return ContentMiniaturisedRemoteDatasource(dio: ref.read(dioProvider));
 });
 
-class ContentMiniaturisedRemoteDatasource extends RemoteDataSource {
+class ContentMiniaturisedRemoteDatasource extends RemoteDatasource {
   final uuid = const Uuid();
 
   ContentMiniaturisedRemoteDatasource({required super.dio});

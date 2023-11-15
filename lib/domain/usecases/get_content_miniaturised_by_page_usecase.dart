@@ -1,5 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:les_mediateurs/core/usecase.dart';
+import 'package:les_mediateurs/core/usecase/usecase.dart';
 import 'package:les_mediateurs/data/repositories/content_miniaturised_repository.dart';
 import 'package:les_mediateurs/domain/models/content_miniaturised.dart';
 

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:les_mediateurs/core/constantes.dart';
+import 'package:les_mediateurs/core/constants.dart';
 import 'package:les_mediateurs/domain/models/trending.dart';
 import 'package:les_mediateurs/presentation/screens/home_page/providers/trending_grid_state_provider.dart';
 import 'package:les_mediateurs/presentation/screens/home_page/widgets/trending_item.dart';
