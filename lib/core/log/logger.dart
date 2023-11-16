@@ -1,42 +1,28 @@
-import 'dart:io';
-
 import 'package:flutter/foundation.dart';
 import 'package:logger/logger.dart';
 
 final logger = Logger(
+  output: FileOutput(),
   printer: PrettyPrinter(
     methodCount: 2,
     errorMethodCount: 8,
-    lineLength: 120,
+    lineLength: 200,
     colors: true,
     printEmojis: true,
-    printTime: false,
+    printTime: true,
   ),
 );
 
 class FileOutput extends LogOutput {
-  late final File? file;
-
-  @override
-  Future<void> init() async {
-    super.init();
-
-    final date = DateTime.now();
-    final String folderName = '${date.year}_${date.month}_${date.day}';
-    file = File('/logs/$folderName/log.txt');
-  }
-
   @override
   void output(OutputEvent event) async {
-    if (file != null) {
-      for (var line in event.lines) {
-        await file!.writeAsString("${line.toString()}\n", mode: FileMode.writeOnlyAppend);
-      }
-      return;
-    }
-
+    // final Directory directory = await getApplicationDocumentsDirectory();
+    // final date = DateTime.now();
+    // final String folderName = '${date.year}_${date.month}_${date.day}';
+    // final File file = File('${directory.path}/logs/$folderName/log.txt');
     for (var line in event.lines) {
       if (kDebugMode) print(line);
+      //await file.writeAsString("${line.toString()}\n", mode: FileMode.writeOnlyAppend);
     }
   }
 }
