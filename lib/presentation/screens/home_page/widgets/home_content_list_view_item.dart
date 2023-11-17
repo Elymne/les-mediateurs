@@ -2,12 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:les_mediateurs/domain/models/content/reduced_content.dart';
 
 class HomeContentListViewItem extends StatelessWidget {
+  final bool isMobileDisplay;
   final ReducedContent reducedContent;
 
-  const HomeContentListViewItem({super.key, required this.reducedContent});
+  const HomeContentListViewItem({super.key, required this.reducedContent, this.isMobileDisplay = false});
 
   @override
   Widget build(BuildContext context) {
+    final widgetHeight = isMobileDisplay ? 100.0 : 160.0;
+    final maxLines = isMobileDisplay ? 2 : 3;
+    final titleFontSize = isMobileDisplay ? 16.0 : 20.0;
+    final globalFontSize = isMobileDisplay ? 12.0 : 16.0;
+
     return MouseRegion(
       cursor: SystemMouseCursors.click,
       onEnter: (e) {},
@@ -15,7 +21,7 @@ class HomeContentListViewItem extends StatelessWidget {
       child: GestureDetector(
         onTap: () {},
         child: Container(
-          height: 160,
+          height: widgetHeight,
           decoration: const BoxDecoration(
             color: Colors.white,
           ),
@@ -31,8 +37,8 @@ class HomeContentListViewItem extends StatelessWidget {
                       maxLines: 2,
                       softWrap: true,
                       overflow: TextOverflow.ellipsis,
-                      style: const TextStyle(
-                        fontSize: 20,
+                      style: TextStyle(
+                        fontSize: titleFontSize,
                         color: Colors.black,
                         fontWeight: FontWeight.w900,
                         wordSpacing: 0,
@@ -41,11 +47,11 @@ class HomeContentListViewItem extends StatelessWidget {
                     const SizedBox(height: 10),
                     Text(
                       reducedContent.description,
-                      maxLines: 3,
+                      maxLines: maxLines,
                       softWrap: true,
                       overflow: TextOverflow.fade,
-                      style: const TextStyle(
-                        fontSize: 16,
+                      style: TextStyle(
+                        fontSize: globalFontSize,
                         color: Colors.grey,
                         fontWeight: FontWeight.w300,
                       ),
@@ -54,8 +60,8 @@ class HomeContentListViewItem extends StatelessWidget {
                     const SizedBox(height: 10),
                     Text(
                       '${reducedContent.createdAt.day}-${reducedContent.createdAt.month}-${reducedContent.createdAt.year}',
-                      style: const TextStyle(
-                        fontSize: 16,
+                      style: TextStyle(
+                        fontSize: globalFontSize,
                         color: Colors.black,
                         fontWeight: FontWeight.w300,
                       ),
@@ -66,8 +72,8 @@ class HomeContentListViewItem extends StatelessWidget {
               const SizedBox(width: 40),
               Image.network(
                 reducedContent.thumbnailUrl,
-                height: 160,
-                width: 160,
+                height: widgetHeight,
+                width: widgetHeight,
                 fit: BoxFit.cover,
               )
             ],

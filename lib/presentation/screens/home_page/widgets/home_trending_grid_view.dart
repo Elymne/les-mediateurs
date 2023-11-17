@@ -120,12 +120,12 @@ class _State extends ConsumerState<HomeTrendingGridView> {
           padding: const EdgeInsets.all(20.0),
           child: SizedBox(
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisSize: MainAxisSize.max,
               children: [
                 const SizedBox(height: 30),
                 const Row(
-                  mainAxisSize: MainAxisSize.max,
+                  mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Icon(Icons.trending_up, size: 40),
@@ -151,6 +151,7 @@ class _State extends ConsumerState<HomeTrendingGridView> {
                     return HomeTrendingGridViewItem(
                       number: index + 1,
                       trending: state.trendings[index],
+                      isMobileDisplay: true,
                     );
                   },
                 ),

@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:les_mediateurs/core/constants.dart';
 import 'package:les_mediateurs/core/l10n/locals.dart';
 import 'package:les_mediateurs/core/l10n/locals_provider.dart';
+import 'package:les_mediateurs/presentation/screens/about_us_page/about_us_page.dart';
 import 'package:les_mediateurs/presentation/widgets/header/items/header_home_item.dart';
 import 'package:les_mediateurs/presentation/widgets/header/items/header_home_item_reduced.dart';
 import 'package:les_mediateurs/presentation/widgets/header/items/header_item.dart';
@@ -79,9 +80,7 @@ class _State extends ConsumerState<Header> {
           children: [
             const SizedBox(width: 20),
             HeaderMenuButton(
-              onClick: () {
-                ref.read(headerStateProvider.notifier).state = SelectedPage.home;
-              },
+              onClick: () {},
             ),
             const SizedBox(width: 40),
             HeaderHomeItemReduced(
@@ -125,24 +124,25 @@ class _State extends ConsumerState<Header> {
                       title: locals.getLocals(context).header_about_us,
                       isSelected: currentPage == SelectedPage.aboutUs,
                       onClick: () {
-                        ref.read(headerStateProvider.notifier).state = SelectedPage.aboutUs;
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) {
+                            return const AboutusPage();
+                          }),
+                        );
                       },
                     ),
                     const SizedBox(width: 30),
                     HeaderItem(
                       title: locals.getLocals(context).header_sign_in,
                       isSelected: currentPage == SelectedPage.signIn,
-                      onClick: () {
-                        ref.read(headerStateProvider.notifier).state = SelectedPage.signIn;
-                      },
+                      onClick: () {},
                     ),
                     const SizedBox(width: 30),
                     HeaderItem(
                       title: locals.getLocals(context).header_auth,
                       isSelected: currentPage == SelectedPage.auth,
-                      onClick: () {
-                        ref.read(headerStateProvider.notifier).state = SelectedPage.auth;
-                      },
+                      onClick: () {},
                     ),
                   ],
                 ),

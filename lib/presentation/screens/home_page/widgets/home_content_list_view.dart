@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:les_mediateurs/core/constants.dart';
 import 'package:les_mediateurs/presentation/screens/home_page/providers/home_content_list_view_state_provider.dart';
 import 'package:les_mediateurs/core/state/enum_state_status.dart';
 import 'package:les_mediateurs/presentation/screens/home_page/widgets/home_content_list_view_item.dart';
@@ -36,8 +37,97 @@ class _State extends ConsumerState<HomeContentListView> {
       );
     }
 
-    if (size.width < 1300) {
-      return const SizedBox();
+    if (size.width < mediumScreenCapWidth && size.width >= smallScreenCapWith) {
+      return Container(
+        color: Colors.white,
+        child: Padding(
+          padding: const EdgeInsets.all(40.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              const SizedBox(height: 60),
+              const Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Icon(Icons.newspaper, size: 40),
+                  SizedBox(width: 10),
+                  Text(
+                    'Derniers contenus',
+                    style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.black,
+                      fontWeight: FontWeight.w900,
+                      wordSpacing: 0,
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 60),
+              CustomGrid(
+                itemCount: homeContentListViewState.reducedContents.length,
+                itemPerRow: 1,
+                rowMargin: 40,
+                builder: (index) {
+                  return HomeContentListViewItem(
+                    reducedContent: homeContentListViewState.reducedContents[index],
+                  );
+                },
+              ),
+              const SizedBox(height: 60),
+            ],
+          ),
+        ),
+      );
+    }
+
+    if (size.width < smallScreenCapWith) {
+      return Container(
+        color: Colors.white,
+        child: Padding(
+          padding: const EdgeInsets.all(40.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              const SizedBox(height: 60),
+              const Row(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Icon(Icons.newspaper, size: 40),
+                  SizedBox(width: 10),
+                  Text(
+                    'Derniers contenus',
+                    style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.black,
+                      fontWeight: FontWeight.w900,
+                      wordSpacing: 0,
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 60),
+              CustomGrid(
+                itemCount: homeContentListViewState.reducedContents.length,
+                itemPerRow: 1,
+                rowMargin: 40,
+                builder: (index) {
+                  return HomeContentListViewItem(
+                    reducedContent: homeContentListViewState.reducedContents[index],
+                    isMobileDisplay: true,
+                  );
+                },
+              ),
+              const SizedBox(height: 60),
+            ],
+          ),
+        ),
+      );
     }
 
     return Container(

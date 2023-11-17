@@ -2,23 +2,25 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:les_mediateurs/domain/models/content/trending.dart';
 
-class HomeTrendingGridViewItem extends ConsumerStatefulWidget {
+class HomeTrendingGridViewItem extends StatelessWidget {
   final int number;
   final Trending trending;
+  final bool isMobileDisplay;
 
   const HomeTrendingGridViewItem({
     super.key,
     required this.number,
     required this.trending,
+    this.isMobileDisplay = false,
   });
 
   @override
-  ConsumerState<ConsumerStatefulWidget> createState() => _State();
-}
-
-class _State extends ConsumerState<HomeTrendingGridViewItem> {
-  @override
   Widget build(BuildContext context) {
+    final widgetHeight = isMobileDisplay ? 80.0 : 120.0;
+    final maxLines = isMobileDisplay ? 1 : 2;
+    final titleFontSize = isMobileDisplay ? 16.0 : 20.0;
+    final globalFontSize = isMobileDisplay ? 12.0 : 16.0;
+
     return MouseRegion(
       cursor: SystemMouseCursors.click,
       onEnter: (e) {},
@@ -26,7 +28,7 @@ class _State extends ConsumerState<HomeTrendingGridViewItem> {
       child: GestureDetector(
         onTap: () {},
         child: Container(
-          height: 120,
+          height: widgetHeight,
           decoration: const BoxDecoration(
             color: Colors.white,
             border: Border(
@@ -48,7 +50,7 @@ class _State extends ConsumerState<HomeTrendingGridViewItem> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    "${widget.number}",
+                    "$number",
                     style: TextStyle(
                       fontSize: 30,
                       color: Colors.grey.shade500,
@@ -64,12 +66,12 @@ class _State extends ConsumerState<HomeTrendingGridViewItem> {
                   children: [
                     const SizedBox(height: 10),
                     Text(
-                      widget.trending.title,
-                      maxLines: 2,
+                      trending.title,
+                      maxLines: maxLines,
                       softWrap: true,
                       overflow: TextOverflow.ellipsis,
-                      style: const TextStyle(
-                        fontSize: 20,
+                      style: TextStyle(
+                        fontSize: titleFontSize,
                         color: Colors.black,
                         fontWeight: FontWeight.w900,
                         wordSpacing: 0,
@@ -77,18 +79,18 @@ class _State extends ConsumerState<HomeTrendingGridViewItem> {
                     ),
                     Text(
                       ///TODO func to display type
-                      widget.trending.contentType.toString(),
-                      style: const TextStyle(
-                        fontSize: 18,
+                      trending.contentType.toString(),
+                      style: TextStyle(
+                        fontSize: globalFontSize,
                         color: Colors.grey,
                         fontWeight: FontWeight.w400,
                       ),
                     ),
                     const Expanded(child: SizedBox()),
                     Text(
-                      '${widget.trending.createdAt.day}-${widget.trending.createdAt.month}-${widget.trending.createdAt.year}',
-                      style: const TextStyle(
-                        fontSize: 16,
+                      '${trending.createdAt.day}-${trending.createdAt.month}-${trending.createdAt.year}',
+                      style: TextStyle(
+                        fontSize: globalFontSize,
                         color: Colors.black,
                         fontWeight: FontWeight.w300,
                       ),
