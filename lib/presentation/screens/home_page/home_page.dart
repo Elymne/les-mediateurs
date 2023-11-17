@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:les_mediateurs/presentation/screens/home_page/widgets/catch_text_container.dart';
-import 'package:les_mediateurs/presentation/screens/home_page/widgets/content_miniaturised_list.dart';
+import 'package:les_mediateurs/presentation/screens/home_page/widgets/home_content_list_view.dart';
 import 'package:les_mediateurs/presentation/screens/home_page/widgets/home_background.dart';
-import 'package:les_mediateurs/presentation/screens/home_page/widgets/trending_grid.dart';
+import 'package:les_mediateurs/presentation/screens/home_page/widgets/home_trending_grid_view.dart';
 import 'package:les_mediateurs/presentation/widgets/header/header.dart';
 
 class HomePage extends ConsumerStatefulWidget {
@@ -74,9 +74,9 @@ class _State extends ConsumerState<HomePage> with SingleTickerProviderStateMixin
                       children: [
                         const CatchTextContainer(),
                         Divider(height: 1, color: Colors.grey.shade100),
-                        const TrendingList(),
+                        const HomeTrendingGridView(),
                         Divider(height: 1, color: Colors.grey.shade100),
-                        const ContentMiniaturisedList(),
+                        const HomeContentListView(),
                       ],
                     ),
                   ),

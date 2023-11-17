@@ -4,17 +4,17 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:les_mediateurs/core/constants.dart';
 import 'package:les_mediateurs/core/state/enum_state_status.dart';
 import 'package:les_mediateurs/presentation/screens/home_page/providers/trending_grid_state_provider.dart';
-import 'package:les_mediateurs/presentation/screens/home_page/widgets/trending_item.dart';
+import 'package:les_mediateurs/presentation/screens/home_page/widgets/home_trending_grid_view_item.dart';
 import 'package:les_mediateurs/presentation/widgets/custom_grid/custom_grid.dart';
 
-class TrendingList extends ConsumerStatefulWidget {
-  const TrendingList({super.key});
+class HomeTrendingGridView extends ConsumerStatefulWidget {
+  const HomeTrendingGridView({super.key});
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() => _State();
 }
 
-class _State extends ConsumerState<TrendingList> {
+class _State extends ConsumerState<HomeTrendingGridView> {
   @override
   void initState() {
     super.initState();
@@ -93,7 +93,7 @@ class _State extends ConsumerState<TrendingList> {
                   rowMargin: 20,
                   margeBetweenItem: 10,
                   builder: (index) {
-                    return TrendingItem(
+                    return HomeTrendingGridViewItem(
                       number: index + 1,
                       trending: state.trendings[index],
                     );
@@ -141,7 +141,7 @@ class _State extends ConsumerState<TrendingList> {
                   rowMargin: 20,
                   margeBetweenItem: 10,
                   builder: (index) {
-                    return TrendingItem(
+                    return HomeTrendingGridViewItem(
                       number: index + 1,
                       trending: state.trendings[index],
                     );
@@ -190,7 +190,7 @@ class _State extends ConsumerState<TrendingList> {
                   rowMargin: 30,
                   margeBetweenItem: 10,
                   builder: (index) {
-                    return TrendingItem(
+                    return HomeTrendingGridViewItem(
                       number: index + 1,
                       trending: state.trendings[index],
                     );

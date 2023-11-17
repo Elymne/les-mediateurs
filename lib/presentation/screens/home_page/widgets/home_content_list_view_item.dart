@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:les_mediateurs/domain/models/content_miniaturised.dart';
+import 'package:les_mediateurs/domain/models/content/reduced_content.dart';
 
-class ContentMiniaturisedItem extends StatelessWidget {
-  final ContentMiniaturised contentMiniaturised;
+class HomeContentListViewItem extends StatelessWidget {
+  final ReducedContent reducedContent;
 
-  const ContentMiniaturisedItem({super.key, required this.contentMiniaturised});
+  const HomeContentListViewItem({super.key, required this.reducedContent});
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +27,7 @@ class ContentMiniaturisedItem extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      contentMiniaturised.title,
+                      reducedContent.title,
                       maxLines: 2,
                       softWrap: true,
                       overflow: TextOverflow.ellipsis,
@@ -40,7 +40,7 @@ class ContentMiniaturisedItem extends StatelessWidget {
                     ),
                     const SizedBox(height: 10),
                     Text(
-                      contentMiniaturised.resume,
+                      reducedContent.description,
                       maxLines: 3,
                       softWrap: true,
                       overflow: TextOverflow.fade,
@@ -53,7 +53,7 @@ class ContentMiniaturisedItem extends StatelessWidget {
                     const Expanded(child: SizedBox()),
                     const SizedBox(height: 10),
                     Text(
-                      '${contentMiniaturised.created.day}-${contentMiniaturised.created.month}-${contentMiniaturised.created.year}',
+                      '${reducedContent.createdAt.day}-${reducedContent.createdAt.month}-${reducedContent.createdAt.year}',
                       style: const TextStyle(
                         fontSize: 16,
                         color: Colors.black,
@@ -65,7 +65,7 @@ class ContentMiniaturisedItem extends StatelessWidget {
               ),
               const SizedBox(width: 40),
               Image.network(
-                contentMiniaturised.imageUrl,
+                reducedContent.thumbnailUrl,
                 height: 160,
                 width: 160,
                 fit: BoxFit.cover,

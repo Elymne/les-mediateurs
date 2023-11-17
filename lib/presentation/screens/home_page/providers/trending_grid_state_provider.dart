@@ -1,8 +1,8 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:les_mediateurs/core/state/enum_state_status.dart';
 import 'package:les_mediateurs/core/usecase/usecase.dart';
-import 'package:les_mediateurs/domain/models/trending.dart';
-import 'package:les_mediateurs/domain/usecases/get_current_trendings_usecase.dart';
+import 'package:les_mediateurs/domain/models/content/trending.dart';
+import 'package:les_mediateurs/domain/usecases/get_home_page_trendings_usecase.dart';
 
 final trendingGridStateProvider = StateNotifierProvider<TrendingGridNotifier, TrendingGridState>((ref) {
   return TrendingGridNotifier(ref.read(getCurrentTrendingsUsecaseProvider));
@@ -23,7 +23,7 @@ class TrendingGridState {
 }
 
 class TrendingGridNotifier extends StateNotifier<TrendingGridState> {
-  final GetCurrentTrendingsUsecase _getCurrentTrendingsUsecase;
+  final GetHomePageTrendingsUsecase _getCurrentTrendingsUsecase;
 
   TrendingGridNotifier(this._getCurrentTrendingsUsecase) : super(const TrendingGridState.initiate());
 

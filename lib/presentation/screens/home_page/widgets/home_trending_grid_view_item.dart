@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:les_mediateurs/domain/models/trending.dart';
+import 'package:les_mediateurs/domain/models/content/trending.dart';
 
-class TrendingItem extends ConsumerStatefulWidget {
+class HomeTrendingGridViewItem extends ConsumerStatefulWidget {
   final int number;
   final Trending trending;
 
-  const TrendingItem({
+  const HomeTrendingGridViewItem({
     super.key,
     required this.number,
     required this.trending,
@@ -16,9 +16,7 @@ class TrendingItem extends ConsumerStatefulWidget {
   ConsumerState<ConsumerStatefulWidget> createState() => _State();
 }
 
-class _State extends ConsumerState<TrendingItem> {
-  final int a = 1;
-
+class _State extends ConsumerState<HomeTrendingGridViewItem> {
   @override
   Widget build(BuildContext context) {
     return MouseRegion(
@@ -78,7 +76,8 @@ class _State extends ConsumerState<TrendingItem> {
                       ),
                     ),
                     Text(
-                      widget.trending.type,
+                      ///TODO func to display type
+                      widget.trending.contentType.toString(),
                       style: const TextStyle(
                         fontSize: 18,
                         color: Colors.grey,
@@ -87,7 +86,7 @@ class _State extends ConsumerState<TrendingItem> {
                     ),
                     const Expanded(child: SizedBox()),
                     Text(
-                      '${widget.trending.created.day}-${widget.trending.created.month}-${widget.trending.created.year}',
+                      '${widget.trending.createdAt.day}-${widget.trending.createdAt.month}-${widget.trending.createdAt.year}',
                       style: const TextStyle(
                         fontSize: 16,
                         color: Colors.black,

@@ -1,17 +1,18 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:les_mediateurs/core/log/logger.dart';
 import 'package:les_mediateurs/core/usecase/usecase.dart';
-import 'package:les_mediateurs/data/repositories/trending_repositories.dart';
-import 'package:les_mediateurs/domain/models/trending.dart';
+import 'package:les_mediateurs/data/repositories/trending_repository.dart';
+import 'package:les_mediateurs/domain/models/content/trending.dart';
+import 'package:les_mediateurs/domain/repositories/trending_repository.dart';
 
 final getCurrentTrendingsUsecaseProvider = Provider((ref) {
-  return GetCurrentTrendingsUsecase(trendingRepository: ref.read(trendingReposity));
+  return GetHomePageTrendingsUsecase(trendingRepository: ref.read(trendingReposity));
 });
 
-class GetCurrentTrendingsUsecase extends UsecaseNoParams<List<Trending>> {
-  final TrendingRepository trendingRepository;
+class GetHomePageTrendingsUsecase extends UsecaseNoParams<List<Trending>> {
+  final ITrendingRepository trendingRepository;
 
-  GetCurrentTrendingsUsecase({required this.trendingRepository});
+  GetHomePageTrendingsUsecase({required this.trendingRepository});
 
   @override
   Future<Result<List<Trending>>> perform() async {

@@ -1,9 +1,9 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:les_mediateurs/data/datasources/remote/trending_remote_datasource.dart';
-import 'package:les_mediateurs/domain/models/trending.dart';
+import 'package:les_mediateurs/domain/models/content/trending.dart';
 import 'package:les_mediateurs/domain/repositories/trending_repository.dart';
 
-final trendingReposity = Provider<TrendingRepository>((ref) {
+final trendingReposity = Provider<ITrendingRepository>((ref) {
   return TrendingRepository(trendingRemoteDatasource: ref.read(trendingRemoteDatasourceProvider));
 });
 
