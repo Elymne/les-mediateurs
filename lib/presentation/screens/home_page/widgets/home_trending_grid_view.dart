@@ -35,9 +35,15 @@ class _State extends ConsumerState<HomeTrendingGridView> {
     if (state.status == StateStatus.loading) {
       return Container(
         height: 400,
+        width: double.infinity,
         color: Colors.white,
-        child: const CircularProgressIndicator(
-          color: Colors.red,
+        child: const Center(
+          child: SizedBox(
+            height: 40,
+            child: CircularProgressIndicator(
+              color: Colors.red,
+            ),
+          ),
         ),
       );
     }
@@ -45,6 +51,7 @@ class _State extends ConsumerState<HomeTrendingGridView> {
     if (state.status == StateStatus.error) {
       return Container(
         height: 400,
+        width: double.infinity,
         color: Colors.white,
         child: Center(
           child: Text(

@@ -24,9 +24,9 @@ class GetHomePageContentsUsecase extends Usecase<List<ReducedContent>, GetConten
       }
 
       return Success(value: contentMiniatuiseds);
-    } on Exception catch (e) {
+    } catch (e) {
       logger.e(e);
-      return Failure(exception: e);
+      return Failure(error: e);
     }
   }
 }

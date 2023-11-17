@@ -11,7 +11,7 @@ class Article with _$Article {
   const factory Article({
     required String id,
     required String title,
-    required ContentType contentType,
+    @JsonKey(name: 'content_type') required ContentType contentType,
     required String description,
     @JsonKey(name: 'main_img_url') required String mainImgUrl,
     required String markdown,

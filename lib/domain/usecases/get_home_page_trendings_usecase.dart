@@ -24,9 +24,9 @@ class GetHomePageTrendingsUsecase extends UsecaseNoParams<List<Trending>> {
       }
 
       return Success(value: trendings);
-    } on Exception catch (e) {
+    } catch (e) {
       logger.e(e);
-      return Failure(exception: e);
+      return Failure(error: e);
     }
   }
 }

@@ -17,7 +17,7 @@ final class Success<T> extends Result<T> {
 }
 
 final class Failure<T> extends Result<T> {
-  final Exception exception;
+  final Object error;
 
-  Failure({required this.exception});
+  Failure({required this.error});
 }

@@ -12,8 +12,7 @@ class Trending with _$Trending {
   const factory Trending({
     required String id,
     required String title,
-    required ContentType contentType,
-    required int order,
+    @JsonKey(name: 'content_type') required ContentType contentType,
     @JsonKey(name: 'created_at') required DateTime createdAt,
     @JsonKey(name: 'updated_at') required DateTime updatedAt,
   }) = _Trending;

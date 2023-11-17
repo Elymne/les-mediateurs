@@ -11,7 +11,7 @@ class ReducedContent with _$ReducedContent {
   const factory ReducedContent({
     required String id,
     required String title,
-    required ContentType contentType,
+    @JsonKey(name: 'content_type') required ContentType contentType,
     required String description,
     @JsonKey(name: 'thumbnail_url') required String thumbnailUrl,
     @JsonKey(name: 'created_at') required DateTime createdAt,
