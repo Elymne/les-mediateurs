@@ -42,6 +42,8 @@ dependencies:
   uuid: ^4.2.1
   logger: ^2.0.2+1
   path_provider: ^2.1.1
+  youtube_player_iframe: ^4.0.4
+  flutter_svg: ^2.0.9
   
 
 dev_dependencies:
@@ -61,6 +63,7 @@ flutter:
   generate: true
   assets:
         - assets/images/
+        - assets/svg/
   fonts:
     - family: Raleway 
       fonts:
