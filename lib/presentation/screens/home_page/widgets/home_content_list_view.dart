@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:les_mediateurs/core/constants.dart';
 import 'package:les_mediateurs/presentation/screens/home_page/providers/home_content_list_view_state_provider.dart';
 import 'package:les_mediateurs/core/state/enum_state_status.dart';
-import 'package:les_mediateurs/presentation/screens/home_page/widgets/home_content_list_view_item.dart';
+import 'package:les_mediateurs/presentation/screens/home_page/widgets/unused/home_content_list_view_item.dart';
 import 'package:les_mediateurs/presentation/widgets/custom_grid/custom_grid.dart';
 
 class HomeContentListView extends ConsumerStatefulWidget {

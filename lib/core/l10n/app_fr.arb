@@ -2,11 +2,12 @@
     "app_name": "Les médiateurs",
     "@HEADER": {},
     "header_home": "Les médiateurs",
-    "header_about_us": "À propos",
-    "header_sign_in": "S'inscrire",
-    "header_auth": "Se connecter",
+    "header_discovery_episodes": "Épisodes découvertes",
+    "header_priest_react": "Priest react",
+    "header_rebroadcast": "Rediffusions",
     "@HOME_PAGE": {},
     "home_page_app_name": "LES MÉDIATEURS",
     "home_page_catch_phrase": "Bienvenue",
-    "home_page_catch_phrase_bis": "Retrouves les dernières informations des médiateurs"
+    "home_page_catch_phrase_bis": "sur le site des Médiateurs",
+    "home_video_trending_video": "Contenu du moment"
 }

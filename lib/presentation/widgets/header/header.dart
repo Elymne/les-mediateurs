@@ -121,7 +121,7 @@ class _State extends ConsumerState<Header> {
                 Row(
                   children: [
                     HeaderItem(
-                      title: locals.getLocals(context).header_about_us,
+                      title: locals.getLocals(context).header_discovery_episodes,
                       isSelected: currentPage == SelectedPage.aboutUs,
                       onClick: () {
                         Navigator.push(
@@ -134,13 +134,13 @@ class _State extends ConsumerState<Header> {
                     ),
                     const SizedBox(width: 30),
                     HeaderItem(
-                      title: locals.getLocals(context).header_sign_in,
+                      title: locals.getLocals(context).header_priest_react,
                       isSelected: currentPage == SelectedPage.signIn,
                       onClick: () {},
                     ),
                     const SizedBox(width: 30),
                     HeaderItem(
-                      title: locals.getLocals(context).header_auth,
+                      title: locals.getLocals(context).header_rebroadcast,
                       isSelected: currentPage == SelectedPage.auth,
                       onClick: () {},
                     ),
